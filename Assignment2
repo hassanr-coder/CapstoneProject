@@ -1,0 +1,8 @@
+'''
+Rayaan Hassan
+CMSC 111
+Spring 2026
+Capstone Project: Assignment 2
+'''
+def calculate_fine(days):
+    fee = days 
