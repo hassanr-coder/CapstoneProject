@@ -4,4 +4,66 @@ CMSC 111
 Spring 2026
 Capstone Project Assignment 1
 '''
-#
+
+# Uses Variables with correct data types
+library_name = "Community Blossom Library"
+is_system_operational = True
+
+Books = {
+    "It Ends With Us": {
+        "author": "Colleen Hoover",
+        "available_copies": 4
+    },
+    "Reminders of Him": {
+        "author": "Colleen Hoover",
+        "available_copies": 3
+    }
+   
+}
+loans= {
+    "John Doe": {
+        "book": "It Ends With Us",
+        "due_date": "2026-05-01"
+    },
+    "Jane Smith": {
+        "book": "Reminders of Him",
+        "due_date": "2026-05-03"
+    }
+}
+
+#Program Header
+print("Welcome to the " + library_name + "!")
+
+#User input
+print("please select an option:")
+print("search for a book (1)")
+print("check out a book (2)" )
+print("exit (3)")
+
+choice = input("Enter your choice: ")
+
+# If/ Elife / Else statements
+if choice == "1":
+    book_title = input("Enter the title of the book you want to search for: ")
+    if book_title in Books:
+        print("Book found: " + book_title)
+        print("Author: " + Books[book_title]["author"])
+        print("Available copies: " + str(Books[book_title]["available_copies"]))
+    else:
+        print("Book not found.")
+elif choice == "2":
+    book_title = input("Enter the title of the book you want to check out: ")
+    if book_title in Books and Books[book_title]["available_copies"] > 0:
+        user_name = input("Enter your name: ")
+        Books[book_title]["available_copies"] -= 1
+        loans[user_name] = {
+            "book": book_title,
+            "due_date": "2026-05-15"
+        }
+        print("Book checked out successfully. Due date: 2026-05-15")
+    else:
+        print("Book not available for checkout.")
+elif choice == "3":
+    print("Thank you for visiting the " + library_name + "!")
+else:
+    print("Invalid choice. Please try again.")          
