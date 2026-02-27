@@ -5,4 +5,21 @@ Spring 2026
 Capstone Project: Assignment 2
 '''
 def calculate_fine(days):
-    fee = days 
+    fee = days * 0.50
+    return fee
+
+def library_message(user):
+    print(f"Checking records for {user}...")
+
+    name = input("Enter member name: ")
+    library_message(name)
+
+    for i in range(3):
+        print(f"\n--- Book Check {i+1} --- ")
+        days_overdue = int(input("Enter the number of days overdue: "))
+        
+
+        total = calculate_fine(days_overdue)
+        print(f"Total fine for {days_overdue} days overdue: ${total:.2f}")
+
+print("\nProcessing complete. Thank you for using the library system!")
