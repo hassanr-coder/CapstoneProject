@@ -1,0 +1,51 @@
+'''
+Rayaan Hassan
+CMSC 111
+Spring 2026
+Capstone Project Assignment 3
+'''
+books = {
+    "It Ends With Us": {
+        "author": "Colleen Hoover",
+        "available": True
+    },
+    "B001": {
+        "author": "Colleen Hoover",
+        "available": True
+    },
+    "B002": {
+        "author": "Colleen Hoover",
+        "available": True
+    },
+    "Reminders of Him": {
+        "author": "Colleen Hoover",
+        "available": True
+    }
+}
+checkout_history = ["B001 was checked out by Maria"]
+
+
+print('---Library Inventory Management System---')
+print("1. view all books")
+print("2. Search by book ID")
+print("3. Exit")
+
+choice = input("\nSelect an option: ")  
+
+if choice == "1":
+    print("\nListing all library assets:")
+    for book_id, details in books.items():
+        status = "Available" if details["available"] else "Checked Out"
+        print(f"ID: {book_id}, Title: {details['author']}, Status: {status}")
+elif choice == "2":    
+    search_id = input("Enter the book ID e.g., B001: ")
+
+    if search_id in books:
+        book = books[search_id]
+        print(f"\nMatch book found: {book['title']}, written by {book['author']}")
+    else:
+        print("\nError: Book ID not found in the library inventory.")
+elif choice == "3":
+    print("Closing system...")
+else:
+    print("Invalid selection.")
