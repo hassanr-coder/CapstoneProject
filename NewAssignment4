@@ -1,0 +1,65 @@
+'''
+Rayaan Hassan
+CMSC 111
+Spring 2026
+Capstone Project Assignment 4
+'''
+
+import json
+import os
+
+def load_data():
+    try:
+        if os.path.exists("library_data.json"):
+            with open("library_data.json", "r") as file:
+                return json.load(file)
+        else:
+            return {
+                "B001": {
+                    "title": "It Ends With Us",
+                    "author": "Colleen Hoover",
+                    "available": True
+                },
+                "B002": {
+                    "title": "Reminders of Him",
+                    "author": "Colleen Hoover",
+                    "available": True
+                }
+                }
+    except Exception as e:
+        print(f"Error loading data: {e}")
+        return {}
+
+def save_data(data):
+    try:
+        with open("library_data.json", "w") as file:
+            json.dump(data, file, indent=4)
+    except Exception as e:
+        print(f"Error saving data: {e}")
+
+books = load_data()
+print('---Library Inventory Management System---')
+print("1. View Inventory")
+print("2. Add New Book")
+print("3. Save and Exit")
+
+choice = input("\nSelect an option: ")
+
+if choice == "1":
+    for b_id, info in books.items():
+        print(f"ID: {b_id} | {info['title']} by {info['author']}")
+
+elif choice == "2":
+    new_id = input ("Enter new ID: ")
+    title = input ("Enter Title: ")
+    author = input ("Enter Author: ")
+   
+    books[new_id] = {"title" : title, "author": author, "available": True}
+    print(f"Added '{title}' to temporary memory. ")
+
+elif choice == "3":
+    save_data(books)
+    print("Data saved to library_data.json. Goodbye!")
+
+else:
+    print("Invalid selection. ")
