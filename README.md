@@ -5,3 +5,9 @@ objectives:
 ~Adding and removing
 ~Finding book by title name
 ~Tracking loans
+
+
+
+Assignment 4
+
+ The purpose of using a JSON file for this program is to make sure that the library information stays saved even after I close the program.
