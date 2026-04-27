@@ -1,0 +1,27 @@
+'''
+Rayaan Hassan
+Spring 2026
+CMSC 111
+Capstone Project Assignment 7
+'''
+# Option 2 Fetching and Displaying Data from an API
+
+import requests
+def fetch_book_by_isbn(isbn):
+    url = f"https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}"
+    try:
+        response = requests.get(url)
+        data = response.json()
+
+        if "items" in data:
+            volume_info = data["items"][0]["volumeInfo"]
+            title = volume_info.get("title", "Unknown Title")
+            authors =", ".join(volume_info.get("authors", ["Unknown Author"]))
+            print(f"Found{title} by {authors}")
+            return{"title": title, "authors": authors} 
+        else:
+            print("No book found with that ISBN.")
+        
+    except Exception as e:
+        print(f"API Error: {e}")
+    return None    
