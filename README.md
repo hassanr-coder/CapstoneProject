@@ -14,7 +14,7 @@ Objectives:
 ~Tracking loans
 
 Some Modules Used:
-12-Libraries and Modules in Python
+12-Libraries and Modules in Python - Datetime Library
 9-File Handling
 10-Object-Oriented Programming
 11-Error Handling and Debugging
