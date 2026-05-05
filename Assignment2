@@ -3,17 +3,22 @@ Rayaan Hassan
 CMSC 111
 Spring 2026
 Capstone Project: Assignment 2
+Code Helper: Gemini AI
 '''
+# Function to calculate the fine based on days overdue
+# Standard rate is $0.50 per day
 def calculate_fine(days):
     fee = days * 0.50
     return fee
 
+# Main function to handle library records and user input
 def library_message(user):
     print(f"Checking records for {user}...")
 
     name = input("Enter member name: ")
     library_message(name)
 
+# Loop through 3 different book checks as required by the assignment
     for i in range(3):
         print(f"\n--- Book Check {i+1} --- ")
         days_overdue = int(input("Enter the number of days overdue: "))

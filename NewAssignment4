@@ -9,6 +9,7 @@ import json
 import os
 
 def load_data():
+    # Error Handling: Catches file-related issues (e.g., file not found, permission errors) gracefully
     try:
         if os.path.exists("library_data.json"):
             with open("library_data.json", "r") as file:
@@ -27,6 +28,7 @@ def load_data():
                 }
                 }
     except Exception as e:
+        # Error Handling: Catches file corruption or permission issues
         print(f"Error loading data: {e}")
         return {}
 
@@ -46,18 +48,22 @@ print("3. Save and Exit")
 choice = input("\nSelect an option: ")
 
 if choice == "1":
+    # Option 1: Iterating through the dictionary and displaying values
     for b_id, info in books.items():
         print(f"ID: {b_id} | {info['title']} by {info['author']}")
 
 elif choice == "2":
+    # Option 2: Capturing new data to expand the dictionary
     new_id = input ("Enter new ID: ")
     title = input ("Enter Title: ")
     author = input ("Enter Author: ")
-   
+
+    # Update the dictionary in memory
     books[new_id] = {"title" : title, "author": author, "available": True}
     print(f"Added '{title}' to temporary memory. ")
 
 elif choice == "3":
+    # Option 3: Finalizing changes by writing memory back to the disk
     save_data(books)
     print("Data saved to library_data.json. Goodbye!")
 

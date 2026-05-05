@@ -8,10 +8,17 @@ Capstone Project Assignment 7
 
 import requests
 def fetch_book_by_isbn(isbn):
+
+    # API endpoint URL with the ISBN parameter injected via f-string
     url = f"https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}"
     try:
+        # Step 1: Send a GET request to the Google Books API
+
         response = requests.get(url)
+        # Step 2: Convert the raw response data into a Python Dictionary (JSON parsing)
         data = response.json()
+
+        # Step 3: Check if the 'items' key exists (indicating a book was found)
 
         if "items" in data:
             volume_info = data["items"][0]["volumeInfo"]
@@ -23,5 +30,6 @@ def fetch_book_by_isbn(isbn):
             print("No book found with that ISBN.")
         
     except Exception as e:
+        # Error Handling: Catches connection issues or parsing errors gracefully
         print(f"API Error: {e}")
     return None    

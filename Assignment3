@@ -4,6 +4,8 @@ CMSC 111
 Spring 2026
 Capstone Project Assignment 3
 '''
+# Nested dictionary representing the library's database
+# Keys are IDs/Titles, containing sub-dictionaries with author and status
 books = {
     "It Ends With Us": {
         "author": "Colleen Hoover",
@@ -22,9 +24,11 @@ books = {
         "available": True
     }
 }
+
+# List to track transaction history
 checkout_history = ["B001 was checked out by Maria"]
 
-
+# Display the main navigation menu to the user
 print('---Library Inventory Management System---')
 print("1. view all books")
 print("2. Search by book ID")
@@ -32,12 +36,15 @@ print("3. Exit")
 
 choice = input("\nSelect an option: ")  
 
+# Option 1: Iterates through the dictionary to display all assets
 if choice == "1":
     print("\nListing all library assets:")
     for book_id, details in books.items():
         status = "Available" if details["available"] else "Checked Out"
         print(f"ID: {book_id}, Title: {details['author']}, Status: {status}")
-elif choice == "2":    
+
+elif choice == "2":   
+     # Option 2: Look up a specific record by its key
     search_id = input("Enter the book ID e.g., B001: ")
 
     if search_id in books:
@@ -46,6 +53,7 @@ elif choice == "2":
     else:
         print("\nError: Book ID not found in the library inventory.")
 elif choice == "3":
+    # Option 3: Standard exit message
     print("Closing system...")
 else:
     print("Invalid selection.")

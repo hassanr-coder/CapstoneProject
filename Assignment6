@@ -8,6 +8,7 @@ import json
 import os
 from datetime import datetime, timedelta #Importing and using Python Library
 
+# Task: Define a class to represent a Book object (Object-Oriented Programming
 class Book:
     def __init__(self, book_id, title, author, available=True):
         self.book_id = book_id
@@ -18,6 +19,7 @@ class Book:
     def toggle_status(self):
         self.available = not self.available
 
+# Data Structure: A dictionary to store Book objects using their IDs as keys
 library_inventory = {
         "B001": Book("B001", "It Ends With Us", "Colleen Hoover"),
         "B002": Book("B002", "Reminders of Him", "Colleen Hoover")
@@ -32,10 +34,13 @@ try:
         choice = int(input("\nSelect an option (Numbers only): "))
 
         if choice == 1:
+            # Option 1: Iterating through the inventory dictionary to display book details
             for b_id, book in library_inventory.items():
                 status = "Available" if book.available else "Checked Out"
                 print(f"{b_id}: {book.title} by {book.author} - {status}")
+        
         elif choice == 2:
+            # Option 2: Handling the checkout process
             book_id = input("Enter the book ID to checkout: ")
             if book_id in library_inventory:
                 if library_inventory[book_id].available:
@@ -47,7 +52,7 @@ try:
             
         else:
             print("Please choose 1 or 2.")
-
+# Error Handling: Catches non-integer inputs (e.g., if a user types a letter)
 
 except ValueError:
         print("Invalid Input Error: You must enter a numerical value for the menu selection.")
